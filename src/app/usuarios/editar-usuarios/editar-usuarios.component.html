@@ -1,0 +1,70 @@
+<div class="container">
+
+<h1 mat-dialog-title>Usuário id: {{data.id}} </h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="cadastro" (ngSubmit)= "submit()">
+        <ul>
+            <mat-form-field appearance="standard" [formGroup]="cadastro">
+                    <mat-label>Nome Completo</mat-label>
+                    <input matInput [formGroup]="cadastro" formControlName="nome" >
+            </mat-form-field>
+        </ul>
+
+        <ul>
+          <mat-form-field appearance="standard" [formGroup]="cadastro">
+                  <mat-label>Nome Completo</mat-label>
+                  <input matInput [formGroup]="cadastro" formControlName="email">
+          </mat-form-field>
+        </ul>
+
+        <ul>
+            <mat-form-field appearance="standard">
+                <mat-label>Contato Alternativo</mat-label>
+                <input matInput [formGroup]="cadastro" formControlName="contatoAlt" >
+            </mat-form-field>
+        </ul>    
+
+        <ul>        
+            <mat-form-field appearance="standard">
+                <mat-label>URL da Imagem de Perfil</mat-label>
+                <input matInput [formGroup]="cadastro" formControlName="imagem">
+            </mat-form-field>
+        </ul>
+
+        <ul>
+            <mat-form-field appearance="standard">
+                <mat-label>Função do Usuário</mat-label>
+                <mat-select [formGroup]="cadastro" formControlName="funcao">
+                <mat-option value="Estagiário(a)">Estagiário(a)</mat-option>
+                <mat-option value="Assistente">Assistente</mat-option>
+                <mat-option value="Analista">Analista</mat-option>
+                <mat-option value="Gerente">Gerente</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </ul>
+
+        <ul>
+            <mat-form-field appearance="standard">
+                <mat-label>Departamento do Usuário</mat-label>
+                <mat-select [formGroup]="cadastro" formControlName="departamento">
+                <mat-option value="Recursos Humanos">Recursos Humanos</mat-option>
+                <mat-option value="Administrativo">Administrativo</mat-option>
+                <mat-option value="Tecnologia da Informação">Tecnologia da Informação</mat-option>
+                <mat-option value="Gerência">Gerência</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </ul>
+
+        
+        <ul>
+            <div mat-dialog-actions>
+                <button mat-raised-button color="primary" aria-label="Salvar" type="submit" [mat-dialog-close]="1">Salvar</button>
+                <button mat-button (click)="cancelar()" tabindex="-1">Cancelar</button>
+            </div>
+             
+        </ul>
+        
+    </form>
+</div>
+</div>

@@ -1,0 +1,67 @@
+<div class="container">
+<h1 mat-dialog-title>Adicionar Usuário</h1>
+<div mat-dialog-content>
+    <form [formGroup]="cadastro" (ngSubmit)= "submit()">
+        <ul>
+            <mat-form-field appearance="standard" [formGroup]="cadastro">
+                    <mat-label>Nome Completo</mat-label>
+                    <input matInput [formGroup]="cadastro" formControlName="nome" placeholder="Digite aqui">
+            </mat-form-field>
+        </ul>
+
+        <ul>
+            <div class="example-container">
+                <mat-form-field appearance="standard">
+                <mat-label>Digite seu e-mail</mat-label>
+                <input matInput [formGroup]="cadastro" formControlName="email" placeholder="exemplo@email.com" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </div>
+        </ul>
+
+        <ul>
+            <mat-form-field appearance="standard">
+                <mat-label>Contato Alternativo</mat-label>
+                <input matInput [formGroup]="cadastro" formControlName="contatoAlt" placeholder="Digite aqui">
+            </mat-form-field>
+        </ul>    
+
+        <ul>        
+            <mat-form-field appearance="standard">
+                <mat-label>URL da Imagem de Perfil</mat-label>
+                <input matInput [formGroup]="cadastro" formControlName="imagem" placeholder="Digite aqui">
+            </mat-form-field>
+        </ul>
+
+        <ul>
+            <mat-form-field appearance="standard">
+                <mat-label>Função do Usuário</mat-label>
+                <mat-select [formGroup]="cadastro" formControlName="funcao">
+                <mat-option value="Estagiário">Estagiário(a)</mat-option>
+                <mat-option value="Assistente">Assistente</mat-option>
+                <mat-option value="Analista">Analista</mat-option>
+                <mat-option value="Gerente">Gerente</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </ul>
+
+        <ul>
+            <mat-form-field appearance="standard">
+                <mat-label>Departamento do Usuário</mat-label>
+                <mat-select [formGroup]="cadastro" formControlName="departamento">
+                <mat-option value="Recursos Humanos">Recursos Humanos</mat-option>
+                <mat-option value="Administrativo">Administrativo</mat-option>
+                <mat-option value="Tecnologia da Informação">Tecnologia da Informação</mat-option>
+                <mat-option value="Gerência">Gerência</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </ul>
+
+        
+        <ul>
+            <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon" type="submit" >Salvar</button> 
+        </ul>
+        
+    </form>
+</div>
+</div>
