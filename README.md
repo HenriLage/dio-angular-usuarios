@@ -1,3 +1,13 @@
+Primeiro projeto de Single Page Application utilizando Angular do bootcamp da Digital-Innovation em conjunto com a Avanade.
+
+Para rodar a API do servidor, abrir o terminal na pasta de digitar npm start.
+
+Para Abrir a aplicação, abrir o terminal na pasta de digitar e digitar ng serve.
+
+Este projeto é uma criação minha em conjunto com @tiagomacielpvh.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
 # Projeto1
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
