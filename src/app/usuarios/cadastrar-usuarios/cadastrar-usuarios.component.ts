@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import {MatDialog, MatDialogRef, } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, } from '@angular/material/dialog';
+
 import { UsuariosService } from 'src/app/core/usuarios.service';
 import { DialogSucessoComponent } from 'src/app/shared/dialog-sucesso/dialog-sucesso.component';
 import { Usuario } from 'src/app/shared/models/usuario';
@@ -16,13 +17,13 @@ export class CadastrarUsuariosComponent implements OnInit {
 
   id!: number;
   cadastro!: FormGroup;
-  
+
   constructor(
     public dialog: MatDialog,
     private fb: FormBuilder,
     private usuariosService: UsuariosService,
     public dialogRef: MatDialogRef<CadastrarUsuariosComponent>
-    ) {}
+  ) { }
 
   ngOnInit(): void {
     this.iniciarFormulario();
@@ -38,8 +39,8 @@ export class CadastrarUsuariosComponent implements OnInit {
     return this.email.hasError('email') ? 'Não é um e-mail válido' : '';
   }
 
-  iniciarFormulario(): void{
-    this.cadastro = this.fb.group({ 
+  iniciarFormulario(): void {
+    this.cadastro = this.fb.group({
       nome: '',
       email: '',
       contatoAlt: '',
@@ -48,7 +49,7 @@ export class CadastrarUsuariosComponent implements OnInit {
       departamento: '',
     })
   }
-  
+
   submit(): void {
     console.log(this.cadastro.value);
     const usuario = this.cadastro.value as Usuario;

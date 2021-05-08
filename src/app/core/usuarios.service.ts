@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { BehaviorSubject, Observable } from 'rxjs';
+
 import { Usuario } from '../shared/models/usuario';
 
 
@@ -16,7 +18,7 @@ export class UsuariosService {
   dialogData: any;
 
   constructor(private http: HttpClient) { }
-  
+
 
   salvar(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(url, usuario);

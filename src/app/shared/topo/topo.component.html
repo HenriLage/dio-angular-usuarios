@@ -1,19 +1,18 @@
 <mat-toolbar>
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon"
+        aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
     </button>
     <span>Projeto DIO</span>
-    
+
     <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-        <mat-icon>list</mat-icon>
-        <span>Listar funcionários</span>
-    </button>
-    <button mat-menu-item (click)="cadastrarUsuario()">
-        <mat-icon>person_add</mat-icon>
-        <span>Cadastrar funcionário</span>
-    </button>
+        <button mat-menu-item>
+            <mat-icon>list</mat-icon>
+            <span>Listar funcionários</span>
+        </button>
+        <button mat-menu-item (click)="cadastrarUsuario()">
+            <mat-icon>person_add</mat-icon>
+            <span>Cadastrar funcionário</span>
+        </button>
     </mat-menu>
-
-
 </mat-toolbar>

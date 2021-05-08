@@ -8,9 +8,9 @@ describe('DeletarUsuariosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeletarUsuariosComponent ]
+      declarations: [DeletarUsuariosComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,18 +1,18 @@
 <div class="container">
-    <h3 mat-dialog-title>Você tem certeza que quer excluir?</h3>
-    <div mat-dialog-content>
-      Id: {{data.id}}
-      <p></p>
-      Nome: {{data.nome}}
-      <p></p>
-      Função: {{data.funcao}}
-      <p></p>
-      Departamento: {{data.url}}
-      <p></p>
-    </div>
-  
-    <div mat-dialog-actions>
-      <button mat-button [mat-dialog-close]="1" (click)="confirmar()">Excluir</button>
-      <button mat-button (click)="cancelar()" tabindex="-1">Cancelar</button>
-    </div>
+  <h3 mat-dialog-title>Você tem certeza que quer excluir?</h3>
+  <div mat-dialog-content>
+    Id: {{data.id}}
+    <p></p>
+    Nome: {{data.nome}}
+    <p></p>
+    Função: {{data.funcao}}
+    <p></p>
+    Departamento: {{data.url}}
+    <p></p>
   </div>
+
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="1" (click)="confirmar()">Excluir</button>
+    <button mat-button (click)="cancelar()" tabindex="-1">Cancelar</button>
+  </div>
+</div>

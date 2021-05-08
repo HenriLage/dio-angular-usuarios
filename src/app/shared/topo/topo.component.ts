@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { MatDialog } from '@angular/material/dialog';
+
 import { CadastrarUsuariosComponent } from 'src/app/usuarios/cadastrar-usuarios/cadastrar-usuarios.component';
 
 @Component({

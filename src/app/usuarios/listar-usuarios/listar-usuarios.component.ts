@@ -1,13 +1,13 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
 
-import {SelectionModel} from '@angular/cdk/collections';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
 
 import { UsuariosService } from '../../core/usuarios.service';
 import { Usuario } from 'src/app/shared/models/usuario';
-import { MatDialog } from '@angular/material/dialog';
 import { EditarUsuariosComponent } from '../editar-usuarios/editar-usuarios.component';
 import { CadastrarUsuariosComponent } from '../cadastrar-usuarios/cadastrar-usuarios.component';
 import { DeletarUsuariosComponent } from '../deletar-usuarios/deletar-usuarios.component';
@@ -19,40 +19,32 @@ import { DeletarUsuariosComponent } from '../deletar-usuarios/deletar-usuarios.c
 })
 
 
-export class ListarUsuariosComponent  implements OnInit {
-  
-  
+export class ListarUsuariosComponent implements OnInit {
+
   usuarios: Usuario[] = [];
   id!: number;
   usuario!: string;
   index!: number;
   exampleDatabase!: UsuariosService | any;
-  
+
   displayedColumns: string[] = ['select', 'id', 'imagem', 'nome', 'email', 'contatoAlt', 'funcao', 'departamento', 'editar', 'excluir'];
   dataSource = new MatTableDataSource<Usuario>(this.usuarios);
   selection = new SelectionModel<Usuario>(true, []);
-  
+
   constructor(
     private usuariosService: UsuariosService,
     public dialog: MatDialog,
     private changeDetectorRefs: ChangeDetectorRef
-    ) { }
-    
-    ngOnInit() {
-      this.getLista();
-      
-    }
+  ) { }
 
-   
-    
+  ngOnInit() {
+    this.getLista();
+  }
+
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  
-
-  cadastrarUsuario() {
-    this.dialog.open(CadastrarUsuariosComponent);
-  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -73,8 +65,8 @@ export class ListarUsuariosComponent  implements OnInit {
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
   /** The label for the checkbox on the passed row */
@@ -93,49 +85,38 @@ export class ListarUsuariosComponent  implements OnInit {
       this.dataSource = new MatTableDataSource(this.usuarios);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-  });
+    });
     this.changeDetectorRefs.detectChanges();
   }
 
-  
+  cadastrarUsuario() {
+    const dialogRef = this.dialog.open(CadastrarUsuariosComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit()
+    });
+  }
 
   botaoEditar(i: number, id: number, imagem: string, nome: string, email: string, contatoAlt: string, funcao: string, departamento: string): void {
-  this.id = id;
-  this.index = i;
-  console.log(this.index);
-  const dialogRef = this.dialog.open(EditarUsuariosComponent, {
-  data: {id: id, imagem: imagem, nome: nome, email: email, contatoAlt: contatoAlt, funcao: funcao, departamento: departamento}
+    this.id = id;
+    this.index = i;
+    console.log(this.index);
+    const dialogRef = this.dialog.open(EditarUsuariosComponent, {
+      data: { id: id, imagem: imagem, nome: nome, email: email, contatoAlt: contatoAlt, funcao: funcao, departamento: departamento }
     });
-
-  // dialogRef.afterClosed().subscribe(result => {
-  //   if (result === 1) {
-  //     const foundIndex = this.exampleDatabase.dataChange.value.findIndex((x: { id: number; }) => x.id === this.id);
-  //     this.exampleDatabase.dataChange.value[foundIndex] = this.usuariosService.getDialogData();
-  //     // And lastly refresh table
-  //     this.refreshTable();
-  //   }
-  // });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit()
+    });
   }
 
   botaoDeletar(i: number, id: number, imagem: string, nome: string, email: string, contatoAlt: string, funcao: string, departamento: string) {
     this.index = i;
     this.id = id;
     const dialogRef = this.dialog.open(DeletarUsuariosComponent, {
-      data: {id: id, imagem: imagem, nome: nome, email: email, contatoAlt: contatoAlt, funcao: funcao, departamento: departamento}
+      data: { id: id, imagem: imagem, nome: nome, email: email, contatoAlt: contatoAlt, funcao: funcao, departamento: departamento }
     });
-
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result === 1) {
-    //     const foundIndex = this.exampleDatabase.dataChange.value.findIndex((x: { id: number; }) => x.id === this.id);
-    //     this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
-    //     this.refreshTable();
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit()
+    });
   }
   
-
-
- 
-
 }

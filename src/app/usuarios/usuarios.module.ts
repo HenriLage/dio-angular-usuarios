@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { DemoMaterialModule } from '../shared/material/material.module';
 
 import { ListarUsuariosComponent } from './listar-usuarios/listar-usuarios.component';
-import { DemoMaterialModule } from '../shared/material/material.module';
 import { EditarUsuariosComponent } from './editar-usuarios/editar-usuarios.component';
 import { CadastrarUsuariosComponent } from './cadastrar-usuarios/cadastrar-usuarios.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeletarUsuariosComponent } from './deletar-usuarios/deletar-usuarios.component';
 
 
@@ -16,7 +17,7 @@ import { DeletarUsuariosComponent } from './deletar-usuarios/deletar-usuarios.co
     ReactiveFormsModule,
     FormsModule
   ],
-  declarations: [ ListarUsuariosComponent, EditarUsuariosComponent, CadastrarUsuariosComponent, DeletarUsuariosComponent ]
+  declarations: [ListarUsuariosComponent, EditarUsuariosComponent, CadastrarUsuariosComponent, DeletarUsuariosComponent]
 })
 
 
