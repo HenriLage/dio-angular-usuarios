@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { SelectionModel } from '@angular/cdk/collections';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -27,9 +26,9 @@ export class ListarUsuariosComponent implements OnInit {
   index!: number;
   exampleDatabase!: UsuariosService | any;
 
-  displayedColumns: string[] = ['select', 'id', 'imagem', 'nome', 'email', 'contatoAlt', 'funcao', 'departamento', 'editar', 'excluir'];
+  displayedColumns: string[] = ['id', 'imagem', 'nome', 'email', 'contatoAlt', 'funcao', 'departamento', 'editar', 'excluir'];
   dataSource = new MatTableDataSource<Usuario>(this.usuarios);
-  selection = new SelectionModel<Usuario>(true, []);
+
 
   constructor(
     private usuariosService: UsuariosService,
@@ -53,28 +52,6 @@ export class ListarUsuariosComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
-  }
-
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Usuario): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
   filteredData: Usuario[] = [];

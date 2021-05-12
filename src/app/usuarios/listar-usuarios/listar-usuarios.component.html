@@ -10,7 +10,6 @@
 
     <div class="example-button-row">
         <button mat-raised-button color="primary" (click)="cadastrarUsuario()">Cadastrar funcionário</button>
-        <button mat-raised-button disabled color="warn">Excluir selecionados</button>
     </div>
 </section>
 
@@ -20,22 +19,6 @@
     <table mat-table [dataSource]="dataSource" matSort matSortStart="desc">
 
         <!-- Coluna Checkbox -->
-        <ng-container matColumnDef="select">
-        <th mat-header-cell *matHeaderCellDef>
-            <mat-checkbox (change)="$event ? masterToggle() : null"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()"
-                        [aria-label]="checkboxLabel()">
-            </mat-checkbox>
-        </th>
-        <td mat-cell *matCellDef="let row">
-            <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)"
-                        [aria-label]="checkboxLabel(row)">
-            </mat-checkbox>
-        </td>
-        </ng-container>
     
         <!-- Coluna ID -->
         <ng-container matColumnDef="id">
@@ -47,7 +30,7 @@
         <ng-container matColumnDef="imagem">
             <th mat-header-cell *matHeaderCellDef> Foto </th>
             <td mat-cell *matCellDef="let element"> 
-                <img class="foto" mat-card-image [src]="element.imagem" >
+                <img class="foto" mat-card-image [src]="element.imagem">
             </td>
         </ng-container>
     
